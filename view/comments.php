@@ -32,4 +32,4 @@ class ViewComments
             echo '<b><font color="red">(' . $value['count'] . ')</font></b>';
         }
     }
-}
+} 
