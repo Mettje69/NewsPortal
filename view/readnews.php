@@ -5,16 +5,16 @@ ob_start();
 <br>
 
 <?php
-ViewNews::ReadNews($n);
+ViewNews::readNews($n);
 
 echo "<br>";
-Controller::Comments($_GET['id']);
+Controller::comments($_GET['id']);
 
 echo "<br>";
-ViewComments::CommentsForm();
+
+ViewComments::commentsForm();
 
 $content = ob_get_clean();
 include_once 'view/layout.php';
 
 ?>
- 

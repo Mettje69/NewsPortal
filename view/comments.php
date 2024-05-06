@@ -20,6 +20,7 @@ class ViewComments
         }
     }
 
+
     public static function CommentsCountWithAncor($value)
     {
         if ($value['count'] > 0)
@@ -28,8 +29,8 @@ class ViewComments
 
     public static function CommentsCount($value)
     {
-        if ($value['conut'] > 0) {
+        if ($value['count'] > 0) {
             echo '<b><font color="red">(' . $value['count'] . ')</font></b>';
         }
     }
-} 
+}

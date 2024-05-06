@@ -1,6 +1,6 @@
 <?php
 
-class database
+class Database
 {
     private $conn;
     private $host;
@@ -16,22 +16,24 @@ class database
         $this->baseName = 'newsportal';
         $this->connect();
     }
+
     function __destruct()
     {
         $this->disconnect();
     }
 
-
     function connect()
     {
-        try {
-            $this->conn = new PDO('mysql:host=' . $this->host . '; dbname=' . $this->baseName . '', $this->user, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-        } catch (PDOException $e) {
-            die ('Connection failed: ' . $e->getMessage());
+
+        if (!$this->conn) {
+            try {
+                $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->baseName . '', $this->user, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+            } catch (Exception $e) {
+                die('Connection failed : ' . $e->getMessage());
+            }
         }
         return $this->conn;
     }
-
 
     function disconnect()
     {
@@ -63,5 +65,4 @@ class database
         $response = $this->conn->exec($query);
         return $response;
     }
-
 }

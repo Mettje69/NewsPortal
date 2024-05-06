@@ -2,34 +2,36 @@
 
 class Controller
 {
-    public static function StartSite()
+
+    public static function startSite()
     {
-        $arr = News::getLast10News();
-        include_once 'view/start.pha';
+        $arr = News::getLast3News();
+        include_once 'view/start.php';
     }
 
-    public static function AllCategory()
+    public static function allCategory()
     {
         $arr = Category::getAllCategory();
         include_once 'view/category.php';
     }
 
-    public static function AllNews()
+    public static function allNews()
     {
         $arr = News::getAllNews();
-        include_once 'view/allnews pbn';
+        include_once 'view/allnews.php';
     }
 
-    public static function NewsByCatID($id)
+    public static function newsByCatID($id)
     {
         $arr = News::getNewsByCategoryID($id);
-        include_once 'view/catnews pbn';
+
+        include_once 'view/catnews.php';
     }
 
-    public static function NewsByID($id)
+    public static function newsByID($id)
     {
-        $arr = News::getNewsByID($id);
-        include_once 'view/readnexs phn';
+        $n = News::getNewsByID($id);
+        include_once 'view/readnews.php';
     }
 
     public static function error404()
@@ -37,40 +39,43 @@ class Controller
         include_once 'view/error404.php';
     }
 
-    public static function InsertComment($c, $id)
+    public static function insertComment($c, $id)
     {
-        Comments::InsertComment($c, $id);
-        //self::NewsByID($id);
-        header('Location::news?id=' . $id . '#ctable');
+        // $c - текст комментария, $id - номер новости, для которой добавлен комментарий
+        Comments::insertComment($c, $id);
+        // self::newsByID($id);
+        header('Location:news?id=' . $id . '#ctable');
     }
 
-    public static function Comments($newsid)
+    // Список комментариев:
+    public static function comments($newsid)
     {
         $arr = Comments::getCommentByNewsID($newsid);
-        ViewComments::CommentByNews($arr);
+        ViewComments::commentsByNews($arr);
     }
 
-    public static function CommentsCount($newsid)
+    // Количество комментариев к новости:
+    public static function commentsCount($newsid)
     {
-        $arr = Comments::getCommnetsCountByNewsID($newsid);
-        ViewComments::CommentsCount($arr);
+        $arr = Comments::getCommentsCountByNewsID($newsid);
+        ViewComments::commentsCount($arr);
     }
 
-    public static function CommentsCountWithAncor($newsid)
+    // Ссылка - переход к списку комментариев
+    public static function commentsCountWithAnchor($newsid)
     {
-        $arr = Comments::getCommnetsCountByNewsID($newsid);
-        ViewComments::CommentCountWithAncor($arr);
+        $arr = Comments::getCommentsCountByNewsID($newsid);
+        ViewComments::commentsCountWithAnchor($arr);
     }
 
-    public function registerForm()
+    // РЕГИСТРАЦИЯ
+    public static function registerForm()
     {
-        include_once ('view/formRegister.php');
+        include_once('view/formRegister.php');
     }
-
-    public function registerUser()
+    public static function registerUser()
     {
         $result = Register::registerUser();
-        include_once ('view/answerRegister.php');
+        include_once('view/answerRegister.php');
     }
-}
-?> 
+}  // End class

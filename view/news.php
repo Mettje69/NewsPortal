@@ -22,6 +22,7 @@ class ViewNews
         }
     }
 
+
     public static function ReadNews($n)
     {
         echo "<h2>" . $n['title'] . "</h2>";
@@ -32,4 +33,4 @@ class ViewNews
 
 
 //добавить методы для других видов представлений новостей
-} 
+}

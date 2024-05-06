@@ -1,10 +1,10 @@
 <?php
-
 class Comments
 {
     public static function insertComment($c, $id)
     {
-        $query = "INSERT INTO `comments` (`id`, `news_id`, `text`, `date`) VALUES (NULL, '" . $id . "', '" . $c . "', CURRENT_TIMESTAMP)";
+        $query = "INSERT INTO `comments` (`id`, `news_id`, `text`, `date`) VALUES (NULL, '" . $id . "', '" . $c . "',
+        CURRENT_TIMESTAMP)";
         $db = new Database();
         $q = $db->executeRun($query);
         return $q;
@@ -18,7 +18,7 @@ class Comments
         return $arr;
     }
 
-    public static function getCommnetsCountByNewsID($id)
+    public static function getCommentsCountByNewsID($id)
     {
         $query = "SELECT count(id) as 'count' FROM comments WHERE news_id=" . (string)$id;
         $db = new Database();

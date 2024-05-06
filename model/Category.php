@@ -1,6 +1,7 @@
 <?php
 class Category
 {
+
     public static function getAllCategory()
     {
         $query = "SELECT * FROM category";
@@ -9,3 +10,4 @@ class Category
         return $arr;
     }
 }
+
