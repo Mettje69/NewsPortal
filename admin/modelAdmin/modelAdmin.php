@@ -51,4 +51,3 @@ class ModelAdmin
         return;
     }
 }
-
