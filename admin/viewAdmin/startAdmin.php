@@ -10,4 +10,3 @@
 
 <?php $content = ob_get_clean(); ?>
 <?php include "viewAdmin/templates/layout.php";
-
