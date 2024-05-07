@@ -34,3 +34,4 @@ class News
         return $n;
     }
 }
+
