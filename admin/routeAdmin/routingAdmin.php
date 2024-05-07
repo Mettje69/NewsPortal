@@ -42,4 +42,3 @@ elseif ($path == 'newsDel' && isset($_GET['id'])) {
 else {
     $response = ControllerAdmin::error404();
 }
-
