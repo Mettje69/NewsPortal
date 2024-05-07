@@ -79,4 +79,3 @@ class Controller
         include_once('view/answerRegister.php');
     }
 }  // End class
-
