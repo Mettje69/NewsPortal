@@ -28,3 +28,4 @@ elseif ($path == 'registerForm') {
 else {
     $response = Controller::error404();
 }
+
