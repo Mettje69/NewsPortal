@@ -28,3 +28,4 @@ class ControllerAdmin
         include_once('viewAdmin/error404.php');
     }
 }  // end class
+
