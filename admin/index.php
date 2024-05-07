@@ -13,3 +13,4 @@ include_once("controllerAdmin/ControllerAdminNews.php");
 include('routeAdmin/routingAdmin.php');
 
 echo $response;
+
