@@ -91,16 +91,34 @@ class ModelAdminNews
 
     // Delete
     public static function getNewsDelete($id)
-    {
-        $test = false;
-        if (isset($_POST['save'])) {
-            $sql = "DELETE FROM `news` WHERE `news`.`id` = " . $id;
-            $db = new Database();
+{
+    $test = false;
+    if (isset($_POST['save'])) {
+        // Initialize the database connection
+        $db = new Database();
+        
+        try {
+            // Disable foreign key checks
+            $sql = "SET FOREIGN_KEY_CHECKS = 0";
+            $db->executeRun($sql);
+
+            // Delete the news article
+            $sql = "DELETE FROM `news` WHERE `news`.`id` = " . intval($id);
             $item = $db->executeRun($sql);
+
+            // Re-enable foreign key checks
+            $sql = "SET FOREIGN_KEY_CHECKS = 1";
+            $db->executeRun($sql);
+
             if ($item == true) {
                 $test = true;
             }
+        } catch (PDOException $e) {
+            // Handle any errors that occur during the process
+            echo "Error: " . $e->getMessage();
         }
-        return $test;
     }
+    return $test;
+}
+
 }  // class

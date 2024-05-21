@@ -10,6 +10,7 @@ if ($path == '' or $path == 'index.php') {
 // ---- ВХОД ----
 elseif ($path == 'login') {
     // Форма входа
+    // echo 'test';
     $response = ControllerAdmin::loginAction();
 } elseif ($path == 'logout') {
     // Выход
@@ -17,6 +18,7 @@ elseif ($path == 'login') {
 }
 // listNews
 elseif ($path == 'newsAdmin') {
+    echo 'test';
     $response = ControllerAdminNews::newsList();
 }
 // add news
@@ -35,6 +37,7 @@ elseif ($path == 'newsEdit' && isset($_GET['id'])) {
 // delete news
 elseif ($path == 'newsDel' && isset($_GET['id'])) {
     $response = ControllerAdminNews::newsDeleteForm($_GET['id']);
+
 } elseif ($path == 'newsDelResult' && isset($_GET['id'])) {
     $response = ControllerAdminNews::newsDeleteResult($_GET['id']);
 }
